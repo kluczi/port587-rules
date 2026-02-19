@@ -12,3 +12,5 @@ class Context:
     def get(self, key: str, default: Any = None) -> Any:
         """Get value from context."""
         return self.data.get(key, default)
+
+
