@@ -18,7 +18,7 @@ class RuleResult:
 class Rule:
     """Base class for all rules."""
     
-    def __init__(self, name: str, conditions: list[Condition], op: LogicalOperator = LogicalOperator.AND, actions: list[Action]):
+    def __init__(self, name: str, conditions: list[Condition], actions: list[Action], op: LogicalOperator = LogicalOperator.AND):
         self.name = name
         self.conditions = conditions
         self.op = op
