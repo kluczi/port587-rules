@@ -3,6 +3,7 @@
 from enum import Enum
 from .context import Context
 from .condition import Condition, ConditionResult
+from .action import Action
 
 class LogicalOperator(Enum):
     AND = "AND"
@@ -17,10 +18,11 @@ class RuleResult:
 class Rule:
     """Base class for all rules."""
     
-    def __init__(self, name: str, conditions: list[Condition], op: LogicalOperator = LogicalOperator.AND):
+    def __init__(self, name: str, conditions: list[Condition], op: LogicalOperator = LogicalOperator.AND, actions: list[Action]):
         self.name = name
         self.conditions = conditions
         self.op = op
+        self.actions=actions
     def evaluate(self, context: Context) -> RuleResult:
         if not self.conditions: 
             return RuleResult(False, self.name, ["Rule has no conditions."])   
