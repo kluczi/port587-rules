@@ -15,7 +15,7 @@ class Action:
         self.action_type=action_type
         self.payload=payload
         self.source_rule=source_rule
-    def to_dict(self):
+    def to_dict(self) -> dict:
         return {
             "action_type": self.action_type.name,
             "payload": self.payload,
