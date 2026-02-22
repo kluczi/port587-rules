@@ -25,10 +25,10 @@ class Engine:
         actions_to_execute=[]
         results=[]
         for rule in self.rules:
-            results.append(rule.evaluate(context))
             result=rule.evaluate(context)
+            results.append(result)
             if result.passed:
-                actions_to_execute.append(rule.actions)
+                actions_to_execute.extend(rule.actions)
 
         passed_rules=[result.rule_name for result in results if result.passed]
         failed_rules=[result.rule_name for result in results if not result.passed]
