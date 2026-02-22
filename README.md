@@ -1,6 +1,6 @@
 # port587-rules
 
-Rule engine for a larger thing I co-author — a [cold email infrastructure partner](https://github.com/port587). It evaluates campaign metrics (e.g. cold email): load context from JSON, define rules with conditions and actions, and run the engine to see which rules pass and which actions to execute.
+Rule engine for a larger thing I co-author - a [cold email infrastructure partner](https://github.com/port587). It evaluates campaign metrics (e.g. cold email): load context from JSON, define rules with conditions and actions, and run the engine to see which rules pass and which actions to execute.
 
 ## Features
 
