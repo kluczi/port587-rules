@@ -58,7 +58,7 @@ class Condition:
 
         try:
             passed = compare(actual, self.expected)
-        expect TypeError: 
+        except TypeError: 
             return ConditionResult(
                 passed=False,
                 reason=(
