@@ -16,53 +16,45 @@ def load_campaign_data(path: str) -> Context:
 def build_rules():
     rule_high_bounce = Rule(
         name="High Bounce Rule",
-        conditions=[
-            Condition("bounce_rate", ComparisonOperator.GREATER_THAN, 0.03)
-        ],
+        conditions=[Condition("bounce_rate", ComparisonOperator.GREATER_THAN, 0.03)],
         actions=[
             Action(
                 action_type=ActionType.PAUSE_CAMPAIGN,
                 payload={"reason": "High bounce rate detected"},
-                source_rule="High Bounce Rule"
+                source_rule="High Bounce Rule",
             )
-        ]
+        ],
     )
 
     rule_good_reply = Rule(
         name="Good Reply Rule",
-        conditions=[
-            Condition("reply_rate", ComparisonOperator.GREATER_EQUAL, 0.02)
-        ],
+        conditions=[Condition("reply_rate", ComparisonOperator.GREATER_EQUAL, 0.02)],
         actions=[
             Action(
                 action_type=ActionType.INCREASE_VOLUME,
                 payload={"delta": 500},
-                source_rule="Good Reply Rule"
+                source_rule="Good Reply Rule",
             )
-        ]
+        ],
     )
 
     rule_low_reply_high_volume = Rule(
         name="Low Reply High Volume Rule",
         conditions=[
             Condition("reply_rate", ComparisonOperator.LESS_THAN, 0.01),
-            Condition("sent_today", ComparisonOperator.GREATER_THAN, 1000)
+            Condition("sent_today", ComparisonOperator.GREATER_THAN, 1000),
         ],
         op=LogicalOperator.AND,
         actions=[
             Action(
                 action_type=ActionType.REDUCE_VOLUME,
                 payload={"delta": -300},
-                source_rule="Low Reply High Volume Rule"
+                source_rule="Low Reply High Volume Rule",
             )
-        ]
+        ],
     )
 
-    return [
-        rule_high_bounce,
-        rule_good_reply,
-        rule_low_reply_high_volume
-    ]
+    return [rule_high_bounce, rule_good_reply, rule_low_reply_high_volume]
 
 
 def main():
@@ -89,7 +81,6 @@ def main():
     print("\nACTIONS")
     for action in result.actions:
         print(action.to_dict())
-        
 
 
 if __name__ == "__main__":
