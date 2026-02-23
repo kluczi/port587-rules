@@ -4,6 +4,7 @@ from enum import Enum
 from .context import Context
 from .condition import Condition
 from .action import Action
+from dataclasses import dataclass
 
 
 class LogicalOperator(Enum):
@@ -11,11 +12,11 @@ class LogicalOperator(Enum):
     OR = "OR"
 
 
+@dataclass
 class RuleResult:
-    def __init__(self, passed: bool, rule_name: str, reasons: list[str]):
-        self.passed = passed
-        self.rule_name = rule_name
-        self.reasons = reasons
+    passed: bool
+    rule_name: str
+    reasons: list[str]
 
 
 class Rule:
