@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 from typing import Any
 from enum import Enum
 import operator
@@ -29,10 +30,10 @@ OPERATOR_PHRASES = {
 }
 
 
+@dataclass
 class ConditionResult:
-    def __init__(self, passed: bool, reason: str):
-        self.passed = passed
-        self.reason = reason
+    passed: bool
+    reason: str
 
 
 class Condition:
