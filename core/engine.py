@@ -3,24 +3,17 @@
 from .rule import Rule, RuleResult
 from .context import Context
 from .action import Action
+from dataclasses import dataclass
 
 
+@dataclass
 class EngineResult:
-    def __init__(
-        self,
-        results: list[RuleResult],
-        passed_rules: list[str],
-        failed_rules: list[str],
-        passed_count: int,
-        failed_count: int,
-        actions: list[Action],
-    ):
-        self.results = results
-        self.passed_rules = passed_rules
-        self.failed_rules = failed_rules
-        self.passed_count = passed_count
-        self.failed_count = failed_count
-        self.actions = actions
+    results: list[RuleResult]
+    passed_rules: list[str]
+    failed_rules: list[str]
+    passed_count: int
+    failed_count: int
+    actions: list[Action]
 
 
 class Engine:
