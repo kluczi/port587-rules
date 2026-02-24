@@ -13,6 +13,7 @@ Rule engine for a larger thing I co-author - a [cold email infrastructure partne
 ## Requirements
 
 - Python 3.10+
+- `pytest` for running the test suite (`pip install pytest`)
 
 ## Usage
 
@@ -54,6 +55,16 @@ python main.py
 ```
 
 `main.py` loads `sample.json`, builds the example rules (high bounce, good reply, low reply + high volume), runs the engine, and prints rule results and actions.
+
+## Tests
+
+- **Run all tests**:
+
+```bash
+pytest
+```
+
+This will discover and run tests under the `tests/` directory (e.g. `tests/test_condition.py`).
 
 ## Project structure
 
