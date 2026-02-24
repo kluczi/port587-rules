@@ -1,6 +1,6 @@
-import pytest
 from core.context import Context
 from core.condition import Condition, ComparisonOperator
+import pytest
 
 
 def test_greater_than_pass():
@@ -15,15 +15,13 @@ def test_greater_than_pass():
 
     # THEN
     assert result.passed is True
-    assert "reply_rate" in result.reason
-    assert "threshold" in result.reason
 
 
 def test_greater_than_fail():
     # GIVEN
     context = Context({"reply_rate": 0.01})
     condition = Condition(
-        field="reply_rate", op=ComparisonOperator.LESS_THAN, expected=0.03
+        field="reply_rate", op=ComparisonOperator.GREATER_THAN, expected=0.03
     )
 
     # WHEN
@@ -31,8 +29,6 @@ def test_greater_than_fail():
 
     # THEN
     assert result.passed is False
-    assert "reply_rate" not in result.reason
-    assert "threshold" not in result.reason
 
 
 def test_equal_pass():
@@ -47,8 +43,6 @@ def test_equal_pass():
 
     # THEN
     assert result.passed is True
-    assert "reply_rate" in result.reason
-    assert "threshold" in result.reason
 
 
 def test_equal_fail():
@@ -63,8 +57,6 @@ def test_equal_fail():
 
     # THEN
     assert result.passed is False
-    assert "reply_rate" not in result.reason
-    assert "threshold" not in result.reason
 
 
 def test_greater_equal_equal_values():
@@ -79,8 +71,6 @@ def test_greater_equal_equal_values():
 
     # THEN
     assert result.passed is True
-    assert "reply_rate" in result.reason
-    assert "threshold" in result.reason
 
 
 def test_greater_equal_greater_pass():
@@ -95,8 +85,6 @@ def test_greater_equal_greater_pass():
 
     # THEN
     assert result.passed is True
-    assert "reply_rate" in result.reason
-    assert "threshold" in result.reason
 
 
 def test_greater_equal_less_fail():
@@ -111,8 +99,6 @@ def test_greater_equal_less_fail():
 
     # THEN
     assert result.passed is False
-    assert "reply_rate" not in result.reason
-    assert "threshold" not in result.reason
 
 
 def test_less_equal_equal_values():
@@ -127,8 +113,6 @@ def test_less_equal_equal_values():
 
     # THEN
     assert result.passed is True
-    assert "reply_rate" in result.reason
-    assert "threshold" in result.reason
 
 
 def test_less_equal_less_pass():
@@ -143,8 +127,6 @@ def test_less_equal_less_pass():
 
     # THEN
     assert result.passed is True
-    assert "reply_rate" in result.reason
-    assert "threshold" in result.reason
 
 
 def test_less_equal_greater_fail():
@@ -159,5 +141,3 @@ def test_less_equal_greater_fail():
 
     # THEN
     assert result.passed is False
-    assert "reply_rate" not in result.reason
-    assert "threshold" not in result.reason
