@@ -70,15 +70,24 @@ This will discover and run tests under the `tests/` directory (e.g. `tests/test_
 
 ```
 port587-rules/
-├── main.py           # Entry point: load context, build rules, run engine
-├── sample.json       # Example campaign metrics
 ├── core/
-│   ├── context.py    # Context (key-value data for evaluation)
-│   ├── condition.py  # Condition, ComparisonOperator, ConditionResult
-│   ├── rule.py       # Rule, LogicalOperator, RuleResult
-│   ├── action.py     # Action, ActionType
-│   ├── engine.py     # Engine, EngineResult
-│   └── trace.py      # Trace (evaluation events)
+│   ├── __init__.py
+│   ├── action.py
+│   ├── condition.py
+│   ├── context.py
+│   ├── engine.py
+│   ├── rule.py
+│   └── trace.py
+├── examples/
+│   ├── main.py
+│   └── sample.json
+├── tests/
+│   ├── test_condition.py
+│   ├── test_engine.py
+│   └── test_rule.py
+├── .gitignore
+├── pytest.ini
+└── README.md
 ```
 
 ## Example rules (from `main.py`)
