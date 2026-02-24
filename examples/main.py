@@ -1,4 +1,5 @@
 import json
+from pathlib import Path
 
 from core.context import Context
 from core.condition import Condition, ComparisonOperator
@@ -58,7 +59,8 @@ def build_rules():
 
 
 def main():
-    context = load_campaign_data("sample.json")
+    sample_path = Path(__file__).with_name("sample.json")
+    context = load_campaign_data(str(sample_path))
 
     rules = build_rules()
     engine = Engine(rules)

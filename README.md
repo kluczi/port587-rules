@@ -16,7 +16,7 @@ Rule engine for a larger thing I co-author - a [cold email infrastructure partne
 
 ## Usage
 
-1. Put your campaign metrics in a JSON file (e.g. `sample.json`):
+1. Put your campaign metrics in a JSON file (see `examples/sample.json`):
 
 ```json
 {
@@ -27,7 +27,7 @@ Rule engine for a larger thing I co-author - a [cold email infrastructure partne
 }
 ```
 
-2. Define rules and run the engine (see `main.py`):
+2. Define rules and run the engine (see `examples/main.py`):
 
 ```python
 from core.context import Context
@@ -50,17 +50,18 @@ result = engine.run(context)
 3. Run the sample:
 
 ```bash
-python main.py
+python examples/main.py
 ```
 
-`main.py` loads `sample.json`, builds the example rules (high bounce, good reply, low reply + high volume), runs the engine, and prints rule results and actions.
+`examples/main.py` loads `examples/sample.json`, builds the example rules (high bounce, good reply, low reply + high volume), runs the engine, and prints rule results and actions.
 
 ## Project structure
 
 ```
 port587-rules/
-├── main.py           # Entry point: load context, build rules, run engine
-├── sample.json       # Example campaign metrics
+├── examples/
+│   ├── main.py       # Example runner (loads sample.json, builds rules, runs engine)
+│   └── sample.json   # Example campaign metrics
 ├── core/
 │   ├── context.py    # Context (key-value data for evaluation)
 │   ├── condition.py  # Condition, ComparisonOperator, ConditionResult
@@ -68,9 +69,11 @@ port587-rules/
 │   ├── action.py     # Action, ActionType
 │   ├── engine.py     # Engine, EngineResult
 │   └── trace.py      # Trace (evaluation events)
+├── tests/
+│   └── test_condition.py
 ```
 
-## Example rules (from `main.py`)
+## Example rules (from `examples/main.py`)
 
 | Rule                  | Conditions                                      | When passed     |
 | --------------------- | ----------------------------------------------- | --------------- |
